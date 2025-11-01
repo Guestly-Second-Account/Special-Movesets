@@ -372,6 +372,62 @@ for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
 
     animTrack:Stop()
 
+function info(txt)
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Credits = Instance.new("TextLabel")
+pcall(function() game.CoreGui.Revit:Destroy() end)
+task.wait(.1)
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Name = 'Revit'
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderColor3 = Color3.fromRGB(0, 255, 0)
+
+
+spawn(function()
+Credits.Parent = ScreenGui
+Credits.Font=Enum.Font.Arcade
+Credits.TextColor3=Color3.new(1,1,1)
+Credits.Position = UDim2.new(0,0,0,0)
+Credits.TextSize = 35
+Credits.Size = UDim2.new(1,0,.1,0)
+Credits.Text = ''
+Credits.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Credits.BorderColor3 = Color3.fromRGB(0, 255, 0)
+end)
+function tw(var,s)
+local a = ""
+local s_l = #s
+for i = 1, s_l do
+local c = string.sub(s, i, i)
+a = a .. c
+var.Text = a
+if c == "." then
+wait(.6)
+elseif c == ";" then
+wait(.3)
+elseif c == "," then
+wait(.3)
+elseif c == "!" then
+wait(.3)
+end
+wait(.03)
+end end
+tw(Credits,txt)
+task.wait(2)
+ScreenGui:Destroy()
+end
+
+spawn(function()
+info('You: Take this! >:D')
+
+end
+
 local function setGreenLightColor(emitter)
     if emitter:IsA("ParticleEmitter") then
         -- Set the color to a gradient resembling light green
@@ -528,6 +584,56 @@ for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
 
     animTrack:Stop()
 
+local brightBlue = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- Dodger blue
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
+}
+
+local fx1 = game:GetService("ReplicatedStorage").Resources.FiveSeasonsFX.CharFX.HeatUp:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Torso"]
+for _, child in ipairs(fx1:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child.Color = brightBlue -- Change particle color to bright blue
+        child:Emit(20) -- Emit 20 particles
+    end
+end
+
+local brightBlue = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- Dodger blue
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
+}
+
+local fx1 = game:GetService("ReplicatedStorage").Resources.FiveSeasonsFX.CharFX.WindupGlow:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Torso"]
+for _, child in ipairs(fx1:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child.Color = brightBlue -- Change particle color to bright blue
+        child:Emit(20) -- Emit 20 particles
+    end
+end
+
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Volume = 5
+    sound.PlaybackSpeed = 1
+    sound.Name = "Second"
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/Guestly-Second-Account/DOORS/raw/refs/heads/main/lv_0_20251101190810.mp3?raw=true", 1, " SucK3")
+
 -- Check for Resources folder in ReplicatedStorage
 local resourcesFolder = ReplicatedStorage:WaitForChild("Resources")
 
@@ -560,7 +666,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://12460977270"
+AnimAnim.AnimationId = "rbxassetid://33169573"
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -588,7 +694,7 @@ end
 
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
-local animationId = 13927612951----omi
+local animationId = 13927612951 ----omi
 
 
 local player = game.Players.LocalPlayer
@@ -611,26 +717,6 @@ local Humanoid = p.Character:WaitForChild("Humanoid")
 for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
 
     animTrack:Stop()
-
-function GitAud(soundgit,filename)
-    SoundName=tostring(SoundName)
-    local url=soundgit
-    local FileName = filename
-    writefile(FileName..".mp3", game:HttpGet(url))
-    return (getcustomasset or getsynasset)(FileName..".mp3")
-end
-
-function CustomGitSound(soundlink, vol, filename)
-    local sound = Instance.new("Sound")
-    sound.SoundId = GitAud(soundlink, filename)
-    sound.Parent = workspace
-    sound.Volume = 5
-    sound.PlaybackSpeed = 1
-    sound.Name = Second"
-   sound:Play()
-end
-
-CustomGitSound("https://github.com/Guestly-Second-Account/DOORS/raw/refs/heads/main/lv_0_20251101190810.mp3?raw=true", 1, " SucK3")
 
 end
 
@@ -1640,6 +1726,66 @@ local brightBlue = ColorSequence.new{
 
 local fx1 = game:GetService("ReplicatedStorage").Resources.DragonUppercut.Hit.mFx.Attachment:Clone()
 fx1.Parent = game.Players.LocalPlayer.Character["Torso"]
+for _, child in ipairs(fx1:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child.Color = brightBlue -- Change particle color to bright blue
+        child:Emit(20) -- Emit 20 particles
+    end
+end
+
+local brightBlue = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- Dodger blue
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
+}
+
+local fx1 = game:GetService("ReplicatedStorage").Resources.LastBreath.Resources.Attachments.LeftHand.Part.ArmParticles2:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Left Arm"]
+for _, child in ipairs(fx1:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child.Color = brightBlue -- Change particle color to bright blue
+        child:Emit(20) -- Emit 20 particles
+    end
+end
+
+local brightBlue = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- Dodger blue
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
+}
+
+local fx1 = game:GetService("ReplicatedStorage").Resources.LastBreath.Resources.Attachments.LeftHand.Part.ArmParticles:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Left Arm"]
+for _, child in ipairs(fx1:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child.Color = brightBlue -- Change particle color to bright blue
+        child:Emit(20) -- Emit 20 particles
+    end
+end
+
+local brightBlue = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- Dodger blue
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
+}
+
+local fx1 = game:GetService("ReplicatedStorage").Resources.LastBreath.Resources.Attachments.RightHand.Part.ArmParticles2:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Left Arm"]
+for _, child in ipairs(fx1:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child.Color = brightBlue -- Change particle color to bright blue
+        child:Emit(20) -- Emit 20 particles
+    end
+end
+
+local brightBlue = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- Dodger blue
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
+}
+
+local fx1 = game:GetService("ReplicatedStorage").Resources.LastBreath.Resources.Attachments.RightHand.Part.ArmParticles:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Left Arm"]
 for _, child in ipairs(fx1:GetChildren()) do
     if child:IsA("ParticleEmitter") then
         child.Color = brightBlue -- Change particle color to bright blue
