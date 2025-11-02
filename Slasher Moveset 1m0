@@ -840,8 +840,8 @@ local brightBlue = ColorSequence.new{
     ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
 }
 
-local fx1 = game:GetService("ReplicatedStorage").Resources.AtomicSlash.AtomicSlash.Part.Attachment:Clone()
-fx1.Parent = game.Players.LocalPlayer.Character["Right Arm"]
+local fx1 = game:GetService("ReplicatedStorage").Resources.DeadlySliceVfx.ParticleSequence.Part.Attachment1:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Torso"]
 for _, child in ipairs(fx1:GetChildren()) do
     if child:IsA("ParticleEmitter") then
         child.Color = brightBlue -- Change particle color to bright blue
@@ -1599,8 +1599,8 @@ local brightBlue = ColorSequence.new{
     ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
 }
 
-local fx1 = game:GetService("ReplicatedStorage").Resources.AtomicSlash.AtomicSlash.Part.Attachment:Clone()
-fx1.Parent = game.Players.LocalPlayer.Character["Right Arm"]
+local fx1 = game:GetService("ReplicatedStorage").Resources.DeadlySliceVfx.ParticleSequence.Part.Attachment1:Clone()
+fx1.Parent = game.Players.LocalPlayer.Character["Torso"]
 for _, child in ipairs(fx1:GetChildren()) do
     if child:IsA("ParticleEmitter") then
         child.Color = brightBlue -- Change particle color to bright blue
@@ -2249,21 +2249,6 @@ local function onAnimationPlayed(animationTrack)
         stopSpecificAnimations()
 
         animationTrack:Stop()
-
-local brightBlue = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
-    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)), -- Dodger blue
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))   -- Light sky blue
-}
-
-local fx1 = game:GetService("ReplicatedStorage").Resources.DeadlySliceVfx.ParticleSequence.Part.Attachment1:Clone()
-fx1.Parent = game.Players.LocalPlayer.Character["Torso"]
-for _, child in ipairs(fx1:GetChildren()) do
-    if child:IsA("ParticleEmitter") then
-        child.Color = brightBlue -- Change particle color to bright blue
-        child:Emit(20) -- Emit 20 particles
-    end
-end
 
 local brightBlue = ColorSequence.new{
     ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),   -- Deep sky blue
