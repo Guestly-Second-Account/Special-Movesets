@@ -2020,7 +2020,6 @@ local function playReplacementAnimation(animationId)
 
     if isAnimating then
 
-print("stop")
         table.insert(queue, animationId)
 
         return
@@ -2095,7 +2094,7 @@ local function onAnimationPlayed(animationTrack)
 
         animationTrack:Stop()
 
-       
+      print("stop") 
 
         local replacementAnimationId = replacementAnimations[tostring(animationId)]
 
