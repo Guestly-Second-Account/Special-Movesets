@@ -235,14 +235,14 @@ local function handleAnimationDetection(animIdsToStop, replacementAnimId, replac
 end
 
 local firstAnimIdsToStop = {10469493270}
-local firstReplacementAnimId = 89044067797964
+local firstReplacementAnimId = 13370310513
 local firstReplacementAnimSpeed = 1
 local firstReplacementAudioId = 7122613461
 local firstReplacementAudioVolume = 1
 handleAnimationDetection(firstAnimIdsToStop, firstReplacementAnimId, firstReplacementAnimSpeed, firstReplacementAudioId, firstReplacementAudioVolume)
 
 local secondAnimIdsToStop = {10469630950}
-local secondReplacementAnimId = 74334194837918
+local secondReplacementAnimId = 13390230973
 local secondReplacementAnimSpeed = 1
 local secondReplacementAudioId = 7122613461
 local secondReplacementAudioVolume = 0.8
@@ -2461,6 +2461,18 @@ for _, child in ipairs(fx1:GetChildren()) do
         child:Emit(20) -- Emit 20 particles
     end
 end
+
+game.Players.LocalPlayer.Character.Humanoid.AnimationPlayed:Connect(function(id)
+if id.Animation.AnimationId == "rbxassetid://14516273501" then
+local k = Instance.new("Animation")
+k.AnimationId = "rbxassetid://18897713456"
+local x = game.Players.LocalPlayer.Character.Humanoid.Animator:LoadAnimation(k)
+x:Play()
+x.TimePosition = 0
+x:AdjustSpeed(1)
+id.Stopped:Wait()
+x:Stop()
+end end)
 
 while true do wait(0)
 if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
